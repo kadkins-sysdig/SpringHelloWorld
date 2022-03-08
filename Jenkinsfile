@@ -6,10 +6,16 @@ pipeline {
         }
     }
     stages {
-        stage('Build') { 
+        stage('Maven Build') { 
             steps {
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
+        stage('Image Build') { 
+            steps {
+                docker.build("springhelloworld:test.$BUILDNMBER")
+            }
+        }
+
     }
 }
