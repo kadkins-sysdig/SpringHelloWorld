@@ -49,12 +49,12 @@ pipeline {
                 env.DOCKER_HOST
                 sh 'printenv | sort'
                 echo "SysDig Scan"
-                /* OLD ENGINE
+                /* OLD ENGINE */
                 sysdig bailOnFail: false, bailOnPluginFail: false, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', forceScan: false, name: 'sysdig_secure_images', inlineScanning: true
-                */
-                /* NEW ENGINE */
-                sysdigImageScan inlineScanExtraParams: '--loglevel=debug', bailOnFail: false, bailOnPluginFail: false, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', imageName: "test-freestyle:1.${BUILD_NUMBER}"
                 /* */
+                /* NEW ENGINE
+                sysdigImageScan inlineScanExtraParams: '--loglevel=debug', bailOnFail: false, bailOnPluginFail: false, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', imageName: "test-freestyle:1.${BUILD_NUMBER}"
+                */
                 /* OLD
                 sysdigImageScan inlineScanExtraParams: '--loglevel=debug', bailOnFail: false, bailOnPluginFail: false, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', forceScan: false, imageName: "test-freestyle:1.${BUILD_NUMBER}", inlineScanning: true
                 */
