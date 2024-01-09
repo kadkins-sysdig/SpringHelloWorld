@@ -36,25 +36,29 @@ pipeline {
 
     stage('Sysdig Secure Image Scan') {
         environment {
+            /*
             http_proxy = "http://10.0.1.83:8887/"
             https_proxy = "http://10.0.1.83:8887/"
             no_proxy = "127.0.0.1,localhost,10.0.1.0/24,10.0.10.0/24"
             DOCKER_HOST = "unix:///var/run/docker.sock"
+            */
         }
         steps {
             script{                    
+                /*
                 env.http_proxy
                 env.https_proxy
                 env.no_proxy
                 env.DOCKER_HOST
                 sh 'printenv | sort'
-                echo "SysDig Scan"
-                /* OLD ENGINE */
-                sysdig bailOnFail: true, bailOnPluginFail: true, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', forceScan: false, name: 'sysdig_secure_images', inlineScanning: true
-                /* */
-                /* NEW ENGINE
-                sysdigImageScan inlineScanExtraParams: '--loglevel=debug', bailOnFail: true, bailOnPluginFail: true, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', imageName: "test-freestyle:1.${BUILD_NUMBER}"
                 */
+                echo "SysDig Scan"
+                /* OLD ENGINE
+                sysdig bailOnFail: true, bailOnPluginFail: true, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', forceScan: false, name: 'sysdig_secure_images', inlineScanning: true
+                */
+                /* NEW ENGINE */
+                sysdigImageScan inlineScanExtraParams: '--loglevel=debug', bailOnFail: true, bailOnPluginFail: true, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', imageName: "test-freestyle:1.${BUILD_NUMBER}"
+                /* */
                 /* OLD
                 sysdigImageScan inlineScanExtraParams: '--loglevel=debug', bailOnFail: false, bailOnPluginFail: false, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', forceScan: false, imageName: "test-freestyle:1.${BUILD_NUMBER}", inlineScanning: true
                 */
