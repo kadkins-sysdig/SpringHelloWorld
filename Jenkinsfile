@@ -35,14 +35,14 @@ pipeline {
     }
 
     stage('Sysdig Secure Image Scan') {
+        /*
         environment {
-            /*
             http_proxy = "http://10.0.1.83:8887/"
             https_proxy = "http://10.0.1.83:8887/"
             no_proxy = "127.0.0.1,localhost,10.0.1.0/24,10.0.10.0/24"
             DOCKER_HOST = "unix:///var/run/docker.sock"
-            */
         }
+        */
         steps {
             script{                    
                 /*
