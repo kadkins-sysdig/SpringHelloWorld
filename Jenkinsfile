@@ -57,10 +57,10 @@ pipeline {
                 sysdig bailOnFail: true, bailOnPluginFail: true, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', forceScan: false, name: 'sysdig_secure_images', inlineScanning: true
                 */
                 /* NEW ENGINE */
-                sysdigImageScan inlineScanExtraParams: '--loglevel=debug', bailOnFail: true, bailOnPluginFail: true, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', imageName: "test-freestyle:1.${BUILD_NUMBER}"
+                sysdigImageScan cliVersionToApply: 'global_default', inlineScanExtraParams: '--loglevel=debug', bailOnFail: true, bailOnPluginFail: true, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', imageName: "test-freestyle:1.${BUILD_NUMBER}"
                 /* */
                 /* OLD
-                sysdigImageScan inlineScanExtraParams: '--loglevel=debug', bailOnFail: false, bailOnPluginFail: false, engineCredentialsId: 'sysdig-secure-api-credentials', engineurl: 'https://secure.sysdig.com', forceScan: false, imageName: "test-freestyle:1.${BUILD_NUMBER}", inlineScanning: true
+                sysdigImageScan inlineScanExtraParams: '--loglevel=debug', bailOnFail: false, bailOnPluginFail: false, engineCredentialsId: 'sysdig-secure-api-credentials', engineURL: 'https://secure.sysdig.com', forceScan: false, imageName: "test-freestyle:1.${BUILD_NUMBER}", inlineScanning: true
                 */
             }
         }        
